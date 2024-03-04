@@ -1,0 +1,68 @@
+<main>
+  <section class="search">
+    <div class="search-bar">
+      <div class="search-icon-input">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-search">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.3-4.3" />
+        </svg>
+        <input autocomplete="off" name="query" [(ngModel)]="query" (keydown)="searchUser()" type="text"
+          placeholder="Buscar usuario..." class="search-input">
+        <button class="reset-query" *ngIf="query" aria-label="Reset search" type="reset" (click)="reset()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-x-circle">
+            <circle cx="12" cy="12" r="10" />
+            <path d="m15 9-6 6" />
+            <path d="m9 9 6 6" />
+          </svg>
+        </button>
+      </div>
+      <section id="autocomplete" class="search-autocomplete" *ngIf="searchResults && searchResults.length > 0">
+        <label for="autocomplete">Resultados</label>
+        <div class="search-results">
+          <button class="search-result" (click)="getUserInfo($event)" *ngFor="let result of searchResults"
+            id="{{ result.name }}">
+            <img src="{{ result.avatar_url }}" class="skeleton" alt="">
+            {{ result.name }}
+          </button>
+        </div>
+      </section>
+    </div>
+  </section>
+  <div class="container" *ngIf="user || repos">
+    <div *ngIf="user" class="profile-container">
+      <img class="avatar" src="{{ user.avatar_url }}" alt="Avatar">
+      <div class="profile-info">
+        <h2>{{ user.name }}</h2>
+        <p>{{ user.bio }}</p>
+        <ul>
+          <li><strong>Seguidores:</strong> {{ user.followers }}</li>
+          <li><strong>Siguiendo:</strong> {{ user.following }}</li>
+          <li><strong>Repositorios públicos:</strong> {{ user.public_repos }}</li>
+          <li><strong>Gists públicos:</strong> {{ user.public_gists }}</li>
+          <li *ngIf="user.location"><strong>Ubicación:</strong> {{ user.location }}</li>
+          <li><strong>Miembro desde:</strong> {{ user.created_at | date }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div *ngIf="repos" class="repo-cards">
+      <h3>Repositorios</h3>
+      <div class="repo-card" *ngFor="let repo of repos">
+        <a href="{{ repo.html_url }}" class="repo-link">{{ repo.name }}</a>
+        <p class="repo-description">{{ repo.description }}</p>
+        <div class="repo-details">
+          <span class="language">{{ repo.language }}</span>
+          <span class="stars">★ {{ repo.stargazers_count }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="no-results-container" *ngIf="!user && !repos">
+    <img src="assets/undraw_no_data_re_kwbl.svg" alt="No hay resultados">
+    <p>No hay resultados</p>
+  </div>
+</main>

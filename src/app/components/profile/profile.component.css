@@ -1,0 +1,245 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+* {
+  font-size: 1rem;
+}
+
+/* Estilos del perfil de GitHub */
+.profile-container {
+  display: flex;
+  align-items: center;
+  margin: 50px 0;
+}
+
+.avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-right: 40px;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-info h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #0366d6;
+  /* Color del enlace de GitHub */
+}
+
+.profile-info p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.profile-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.profile-info ul li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.profile-info ul li strong {
+  font-weight: bold;
+}
+
+.profile-info ul li a {
+  color: #0366d6;
+  /* Color de enlaces de GitHub */
+  text-decoration: none;
+}
+
+.profile-info ul li a:hover {
+  text-decoration: underline;
+}
+
+.repo-cards {
+  margin-top: 40px;
+}
+
+.repo-card {
+  background-color: #fff;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  padding: 20px;
+  transition: transform 0.3s ease;
+  margin-bottom: 1em;
+}
+
+.repo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.repo-link {
+  color: #0366d6;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.repo-description {
+  color: #586069;
+  margin-top: 10px;
+}
+
+.repo-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.language {
+  color: #586069;
+}
+
+.stars {
+  color: #586069;
+  font-weight: bold;
+}
+
+.search {
+  margin: 2em auto;
+  max-width: 60ch;
+}
+
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  gap: .2em;
+
+  .search-icon-input {
+    padding: 1em;
+    background-color: hsl(0, 0%, 86%);
+    border-radius: 4em;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    align-items: center;
+    align-content: center;
+
+    &:hover {
+      background-color: hsl(0, 0%, 76%);
+    }
+
+    &:focus-within {
+      outline: 2px solid blue;
+      background-color: hsl(0, 0%, 76%);
+    }
+
+    input {
+      border: none;
+      background-color: transparent;
+      outline: none;
+      width: 100%;
+    }
+
+    .reset-query {
+      display: flex;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+      border: none;
+      background-color: transparent;
+
+      &:focus {
+        outline: 2px solid blue;
+      }
+    }
+  }
+
+  .search-autocomplete {
+    margin: 0;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    border-radius: 2em;
+    max-height: 30em;
+    overflow: hidden;
+    color: hsl(0, 0%, 20%);
+    background-color: hsl(0, 0%, 76%);
+  }
+
+  label {
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+
+  .search-results {
+    padding: .1em;
+    display: flex;
+    flex-direction: column;
+    gap: .4em;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    outline: none;
+  }
+
+  .search-result {
+    list-style: none;
+    cursor: pointer;
+    border-radius: 1em;
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+
+    p {
+      padding: 0;
+      margin: 0;
+    }
+
+    img {
+      width: 2em;
+      height: 2em;
+      border-radius: 100%;
+      margin-right: .5em;
+    }
+
+    &:hover {
+      background-color: hsl(0, 0%, 66%);
+    }
+
+    &:focus {
+      outline: 2px solid blue;
+      background-color: hsl(0, 0%, 66%);
+    }
+  }
+
+}
+
+/* Estilos para el contenedor de "No hay resultados" */
+.no-results-container {
+  text-align: center;
+  margin: 14em 0;
+}
+
+.no-results-container img {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 80%);
+  }
+
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
